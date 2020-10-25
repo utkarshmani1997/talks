@@ -1,0 +1,107 @@
+# Unit test 101
+Tags: go, golang, unit-tesing
+
+Utkarsh Mani Tripathi
+Software Engineer, Jfrog
+7 Nov 2020
+utkarshmani1997@gmail.com
+utkarshm@jfrog.com
+@utkarshmanitrip
+
+## Introduction
+
+Goals of this talk:
+
+- What, why & when
+- Various unit testing workflows 
+- Testing techniques
+- Good practices
+- Tips and tricks to use ginkgo effectively
+- Handson exercise
+- About gocenter
+
+## What
+
+A way of testing where the **smallest piece** of code of a software that can be logically isolated.
+For example:  A function or a set of functions in a package
+
+## Why
+
+- Helps in verifying the small changes (refactoring, debugging) quickly.
+
+.play small_change.go
+
+## Why continue...
+
+- Measure of quality of the code and gives confidence during frequent releases.
+- Helps in understanding the complex logics.
+- Helps in understanding the cause of failure quickly because black box testing is
+helpful in only knowing what failed in order to know where it was failed or the cause
+of failure is very tough.
+- Great way to learn about a language as well as project.
+
+Will discuss about **"When"** at the end of this talk.
+
+## Testing workflows
+
+There are various workflows that people follow, like: TBT, BDT.
+- Both of the testing methodologies are adopted extensively in various projects.
+- TBT is used for testing small units of a codebase whereas people prefer BDT for 
+integration testing.
+- We at jfrog use TBT for unit testing and BDT for functional testing.
+- Kubernetes also uses same pattern.
+
+## Table based testing (TBT)
+
+- Map/slice is used to build inputs and expected outputs.
+- Easy to implement and easy to extend further as we don't need to add boilerplate code again and again.
+- Gives clear visualization of what's covered and what not.
+
+## Table based testing (TBT) continue...
+
+.code small_change_test.go /^func TestSmallChange/,/^}/
+
+## Behaviour driven testing (BDT)
+
+- Makes tests readable, just like plain engish.
+- Requires lots of effort.
+- Good in understanding the functionality of a project and explaining it to the stakeholders.
+- Ginkgo framework is very famous and it makes testing fun.
+- Learning curve is little high initially.
+
+## Behaviour driven testing (BDT) continue...
+
+Function to be tested
+
+.code bdd/main.go /^func Sum/,/^}/
+
+## Behaviour driven testing (BDT) continue...
+
+.code bdd/main_test.go /^var _ = Describe/,/^}/
+
+## Testing techniques
+
+- Subtests and parallel tests
+- Mocking
+- Fuzzing
+
+
+## Good practices
+
+Go itself provides lots of testing tools as a part of its standard library and eases the job
+of the developer, but there are some challenges while writing the units test for your business
+logic. There are few keypoints which one should always keep in his mind while writing unit tests:
+
+- Make everything configurable by inheriting them in struct (avoid global variables)
+- Use interfaces if there are third party dependencies/system calls/database etc.
+- Avoid mocking networkinig instead make helper functions to test the functionality. This gives us
+ability to test lots of real world exceptions. 
+
+
+## When
+
+- If you think its easing your job of validating your changes/fixes.
+- If you donot have enough integration test coverage, because setting up unit
+test env is fairly easy as compared to writing integrations tests.
+- If business logic depends on third party components, writing mocks is one time
+effort but will be very much helpful in validating the changes (business logic) quickly.
