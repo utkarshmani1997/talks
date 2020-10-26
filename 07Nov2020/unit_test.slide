@@ -15,11 +15,12 @@ Goals of this talk:
 - What, why & when
 - Various unit testing workflows 
 - Testing techniques
-- Good practices
 - Tips and tricks to use ginkgo effectively
 - Handson exercise
+- Summary
 - About gocenter
 
+## What, why & when
 ## What
 
 A way of testing where the **smallest piece** of code of a software that can be logically isolated.
@@ -43,6 +44,7 @@ of failure is very tough.
 Will discuss about **"When"** at the end of this talk.
 
 ## Testing workflows
+## Testing workflows
 
 There are various workflows that people follow, like: TBT, BDT.
 - Both of the testing methodologies are adopted extensively in various projects.
@@ -54,7 +56,7 @@ integration testing.
 ## Table based testing (TBT)
 
 - Map/slice is used to build inputs and expected outputs.
-- Easy to implement and easy to extend further as we don't need to add boilerplate code again and again.
+- Easy to implement and easy to extend further as we don't need to write boilerplate code again and again.
 - Gives clear visualization of what's covered and what not.
 
 ## Table based testing (TBT) continue...
@@ -80,13 +82,38 @@ Function to be tested
 .code bdd/main_test.go /^var _ = Describe/,/^}/
 
 ## Testing techniques
+## Testing techniques
 
 - Subtests and parallel tests
 - Mocking
 - Fuzzing
 
+## Subtests
 
-## Good practices
+Can be used for bootstraping the test environment or teardown the test suits.
+
+.code techniques/example_test.go
+
+## Parallel tests
+
+.code techniques/parallel_example_test.go
+
+## Mocking
+
+Mocking is a very debatable topic, people usually discourage writing mock functions if
+business logic gets cluttered with lots of third party dependencies. The reason is the 
+maintenance cost associated with it.
+
+Do only if it is making your job easiy in testing your business logic, wait till the
+requirement freezes and then start actual implementation, ignore if you have to write
+complex logics to test the functionality.
+
+Its one time effort but very much helpful in verifying the logic quickly.
+
+**"A great rule of thumb for Go is accept interfaces, return structs."** *–Jack Lindamood*
+
+## Summary
+## Summary
 
 Go itself provides lots of testing tools as a part of its standard library and eases the job
 of the developer, but there are some challenges while writing the units test for your business
@@ -94,9 +121,9 @@ logic. There are few keypoints which one should always keep in his mind while wr
 
 - Make everything configurable by inheriting them in struct (avoid global variables)
 - Use interfaces if there are third party dependencies/system calls/database etc.
+- Accept interfaces return structs
 - Avoid mocking networkinig instead make helper functions to test the functionality. This gives us
 ability to test lots of real world exceptions. 
-
 
 ## When
 
