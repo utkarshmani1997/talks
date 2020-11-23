@@ -24,7 +24,7 @@ Goals of this talk:
 ## What
 
 A way of testing where the **smallest piece** of code of a software that can be logically isolated.
-For example:  A function or a set of functions in a package
+For example: A function or a set of functions in a package
 
 ## Why
 
@@ -65,7 +65,7 @@ integration testing.
 
 ## Behaviour driven testing (BDT)
 
-- Makes tests readable, just like plain engish.
+- Makes tests readable, just like plain english.
 - Requires lots of effort.
 - Good in understanding the functionality of a project and explaining it to the stakeholders.
 - Ginkgo framework is very famous and it makes testing fun.
@@ -112,6 +112,13 @@ Its one time effort but very much helpful in verifying the logic quickly.
 
 **"A great rule of thumb for Go is accept interfaces, return structs."** *–Jack Lindamood*
 
+## Example 
+
+.code techniques/mocking/main.go
+
+## Example continue...
+
+
 ## Summary
 ## Summary
 
@@ -132,3 +139,7 @@ ability to test lots of real world exceptions.
 test env is fairly easy as compared to writing integrations tests.
 - If business logic depends on third party components, writing mocks is one time
 effort but will be very much helpful in validating the changes (business logic) quickly.
+
+##
+
+**Testing is hard only if your code is not organized well and writing unit tests helps in writing good code** *- utkarsh*
