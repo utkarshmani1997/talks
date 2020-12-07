@@ -1,0 +1,6 @@
+mode: atomic
+github.com/utkarshmani1997/talks/12Dec2020/bdd/ginkgo-gomega/server/server.go:9.54,11.2 1 2
+github.com/utkarshmani1997/talks/12Dec2020/bdd/ginkgo-gomega/server/server.go:13.58,15.16 2 2
+github.com/utkarshmani1997/talks/12Dec2020/bdd/ginkgo-gomega/server/server.go:19.2,19.60 1 1
+github.com/utkarshmani1997/talks/12Dec2020/bdd/ginkgo-gomega/server/server.go:15.16,18.3 2 1
+github.com/utkarshmani1997/talks/12Dec2020/bdd/ginkgo-gomega/server/server.go:24.13,28.2 3 0

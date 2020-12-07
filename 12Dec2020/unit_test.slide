@@ -2,11 +2,25 @@
 Tags: go, golang, unit-tesing
 
 Utkarsh Mani Tripathi
-Software Engineer, Jfrog
-7 Nov 2020
+Software Engineer, JFrog
+12 Dec 2020
+
 utkarshmani1997@gmail.com
 utkarshm@jfrog.com
+
 @utkarshmanitrip
+https://www.medium.com/@utkarshmani1997
+
+## Who am I?
+
+- Responsible for conan-center and other community projects at JFrog
+- Open source contributor
+- Early morning person
+- Part time writer
+
+
+## "A software system can be best be designed if the testing is interlaced with the designing instead of being used after the design."
+                                                                              - Alan Perlis
 
 ## Introduction
 
@@ -15,48 +29,55 @@ Goals of this talk:
 - What, why & when
 - Various unit testing workflows 
 - Testing techniques
-- Tips and tricks to use ginkgo effectively
 - Handson exercise
 - Summary
-- About gocenter
+
 
 ## What, why & when
-## What
+## Unit tests
 
-A way of testing where the **smallest piece** of code of a software that can be logically isolated.
-For example: A function or a set of functions in a package
+**A way of testing where the behaviour of a unit of a software is tested to determine if they work properly and exhibit the expected behaviour.**
 
 ## Why
 
-- Helps in verifying the small changes (refactoring, debugging) quickly.
 
 .play small_change.go
 
 ## Why continue...
 
-- Measure of quality of the code and gives confidence during frequent releases.
+.code query
+
+## Why continue...
+
+- Helps in verifying the small changes (**refactoring**, **debugging**) quickly.
+- Measures the **quality** of the code.
+- Helps in refactoring the code and gives confidence during frequent releases.
 - Helps in understanding the complex logics.
-- Helps in understanding the cause of failure quickly because black box testing is
-helpful in only knowing what failed in order to know where it was failed or the cause
-of failure is very tough.
+- Helps in understanding the **cause of failure** quickly.
+- Helps reviewer to understand the fixes/changes.
 - Great way to learn about a language as well as project.
 
 Will discuss about **"When"** at the end of this talk.
 
+## What it is not
+
+.image dave_cheney.png 500 900
+
+
 ## Testing workflows
 ## Testing workflows
 
-There are various workflows that people follow, like: TBT, BDT.
+- TBT, BDT
 - Both of the testing methodologies are adopted extensively in various projects.
 - TBT is used for testing small units of a codebase whereas people prefer BDT for 
 integration testing.
-- We at jfrog use TBT for unit testing and BDT for functional testing.
+- We at JFrog use TBT for unit testing and BDT for functional testing and integration testing.
 - Kubernetes also uses same pattern.
 
 ## Table based testing (TBT)
 
 - Map/slice is used to build inputs and expected outputs.
-- Easy to implement and easy to extend further as we don't need to write boilerplate code again and again.
+- Easy to implement and easy to extend further.
 - Gives clear visualization of what's covered and what not.
 
 ## Table based testing (TBT) continue...
@@ -65,13 +86,23 @@ integration testing.
 
 ## Behaviour driven testing (BDT)
 
-- Makes tests readable, just like plain english.
-- Requires lots of effort.
+- Human readable description of the software requirements.
+- Requires planning and lots of effort.
 - Good in understanding the functionality of a project and explaining it to the stakeholders.
-- Ginkgo framework is very famous and it makes testing fun.
 - Learning curve is little high initially.
+- Ginkgo and gomega framework is preferred by various projects.
 
-## Behaviour driven testing (BDT) continue...
+## Ginkgo and Gomega
+
+## Ginkgo (BDD testing framework for Go)
+
+.image ginkgo.png 500 900
+
+## Gomega (Matcher library)
+
+.image gomega.png 500 900
+
+## Behaviour driven testing (BDT) continue
 
 Function to be tested
 
@@ -80,6 +111,7 @@ Function to be tested
 ## Behaviour driven testing (BDT) continue...
 
 .code bdd/main_test.go /^var _ = Describe/,/^}/
+
 
 ## Testing techniques
 ## Testing techniques
@@ -90,8 +122,6 @@ Function to be tested
 
 ## Subtests
 
-Can be used for bootstraping the test environment or teardown the test suits.
-
 .code techniques/example_test.go
 
 ## Parallel tests
@@ -99,47 +129,75 @@ Can be used for bootstraping the test environment or teardown the test suits.
 .code techniques/parallel_example_test.go
 
 ## Mocking
+## Mocking
 
-Mocking is a very debatable topic, people usually discourage writing mock functions if
-business logic gets cluttered with lots of third party dependencies. The reason is the 
-maintenance cost associated with it.
-
-Do only if it is making your job easiy in testing your business logic, wait till the
-requirement freezes and then start actual implementation, ignore if you have to write
-complex logics to test the functionality.
-
-Its one time effort but very much helpful in verifying the logic quickly.
-
-**"A great rule of thumb for Go is accept interfaces, return structs."** *–Jack Lindamood*
+- Testing technique to test the code which has external dependencies
+- Purpose of mocking is to isolate and focus on the code being tested and not on the behaviour or
+state of external dependencies.
+- Comes with maintenance cost.
+- One time effort but very much helpful in verifying the logic quickly.
 
 ## Example 
 
-.code techniques/mocking/main.go
+.code techniques/mocking/sample_app/main.go
+
+##
+
+.caption "A great rule of thumb for Go is accept interfaces, return structs." –Jack Lindamood
 
 ## Example continue...
 
+.code complex/complex.go /^func complex/,/^}/
+
+## Fuzzing
+
+Testing technique that involves provoding invalid, unexpected or random data to the program and
+the program is then monitored for crashes, failures and memory leaks.
+
+## Why the fuzz
+
+.code fuzz.go
+
+## Why the fuzz
+
+- Humans are biased and make assumptions while writing tests.
+- May miss complex edge cases.
+- Improves the quality of the software 
+
+.link https://github.com/google/gofuzz
+
+## Demo
 
 ## Summary
 ## Summary
 
-Go itself provides lots of testing tools as a part of its standard library and eases the job
-of the developer, but there are some challenges while writing the units test for your business
-logic. There are few keypoints which one should always keep in his mind while writing unit tests:
-
+- Test behaviours not implementation
 - Make everything configurable by inheriting them in struct (avoid global variables)
 - Use interfaces if there are third party dependencies/system calls/database etc.
+- Closures helps you a lot in extending your code further.
 - Accept interfaces return structs
-- Avoid mocking networkinig instead make helper functions to test the functionality. This gives us
-ability to test lots of real world exceptions. 
+- Avoid mocking networking instead make helper functions to test the functionality. 
 
 ## When
 
+- You should always write UT's for your code while developing features
 - If you think its easing your job of validating your changes/fixes.
 - If you donot have enough integration test coverage, because setting up unit
 test env is fairly easy as compared to writing integrations tests.
 - If business logic depends on third party components, writing mocks is one time
 effort but will be very much helpful in validating the changes (business logic) quickly.
 
+
 ##
 
-**Testing is hard only if your code is not organized well and writing unit tests helps in writing good code** *- utkarsh*
+.caption "Testing is hard only if your code is not organized well and writing unit tests helps in organizing your code"
+
+## References
+
+- https://dave.cheney.net/2019/04/03/absolute-unit-test
+- https://www.infoq.com/presentations/1-9-6-8
+
+## Q&A
+
+- Gophers Slack #GoCenter
+- gocenter@jfrog.com

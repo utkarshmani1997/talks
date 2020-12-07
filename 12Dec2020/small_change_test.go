@@ -12,8 +12,8 @@ func TestSmallChange(t *testing.T) {
 		expected       string
 		isErr          bool
 	}{
-		{name: "Happy case: valid input1 and input2", input1: "Implement", input2: "by yourself", expected: "Implement by yourself"},
-		{name: "Failure case: empty input1 and valid input2", input1: "", input2: "let interns do the job ;p", expected: "", isErr: true},
+		{name: "Case01", input1: "Small", input2: "change", expected: "Small change"},
+		{name: "Case02", input1: "", input2: "hello", expected: "", isErr: true},
 	}
 
 	for _, tt := range cases {
