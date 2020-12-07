@@ -1,8 +1,6 @@
 package main
 
-import (
-	"github.com/utkarshmani1997/talks/12Dec2020/techniques/mocking/database"
-)
+import "github.com/utkarshmani1997/talks/12Dec2020/techniques/mocking/sample_app/database"
 
 func main() {
 	database.Setup()

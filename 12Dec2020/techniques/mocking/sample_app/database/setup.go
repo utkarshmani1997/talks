@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	_ "github.com/lib/pq"
-	"github.com/utkarshmani1997/talks/12Dec2020/techniques/mocking/bootstrap"
+	"github.com/utkarshmani1997/talks/12Dec2020/techniques/mocking/sample_app/bootstrap"
 )
 
 const (
