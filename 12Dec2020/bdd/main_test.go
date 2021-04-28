@@ -18,12 +18,12 @@ var _ = Describe("Sum", func() {
 	})
 	Context("By providing two digits as input", func() {
 		It("should return sum of the two digits", func() {
-			addition_of_two_digits := Sum(p, q)
-			Expect(addition_of_two_digits).Should(Equal(sum1))
+			addition_of_p_and_q := Sum(p, q)
+			Expect(addition_of_p_and_q).Should(Equal(sum1))
 		})
 		It("should not return the sum provided", func() {
-			addition_of_two_digits := Sum(m, n)
-			Expect(addition_of_two_digits).ShouldNot(Equal(sum2))
+			addition_of_m_and_n := Sum(m, n)
+			Expect(addition_of_m_and_n).ShouldNot(Equal(sum2))
 		})
 	})
 })

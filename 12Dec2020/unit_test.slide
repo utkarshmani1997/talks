@@ -33,13 +33,10 @@ Goals of this talk:
 - Summary
 
 
-## What, why & when
 ## Unit tests
-
-**A way of testing where the behaviour of a unit of a software is tested to determine if they work properly and exhibit the expected behaviour.**
+- **A way of testing where the behaviour of a unit of a software is tested to determine if they work properly and exhibit the expected behaviour.**
 
 ## Why
-
 
 .play small_change.go
 
@@ -64,7 +61,6 @@ Will discuss about **"When"** at the end of this talk.
 .image dave_cheney.png 500 900
 
 
-## Testing workflows
 ## Testing workflows
 
 - TBT, BDT
@@ -92,8 +88,6 @@ integration testing.
 - Learning curve is little high initially.
 - Ginkgo and gomega framework is preferred by various projects.
 
-## Ginkgo and Gomega
-
 ## Ginkgo (BDD testing framework for Go)
 
 .image ginkgo.png 500 900
@@ -102,7 +96,7 @@ integration testing.
 
 .image gomega.png 500 900
 
-## Behaviour driven testing (BDT) continue
+## Behaviour driven testing (BDT) continue...
 
 Function to be tested
 
@@ -113,7 +107,6 @@ Function to be tested
 .code bdd/main_test.go /^var _ = Describe/,/^}/
 
 
-## Testing techniques
 ## Testing techniques
 
 - Subtests and parallel tests
@@ -129,7 +122,6 @@ Function to be tested
 .code techniques/parallel_example_test.go
 
 ## Mocking
-## Mocking
 
 - Testing technique to test the code which has external dependencies
 - Purpose of mocking is to isolate and focus on the code being tested and not on the behaviour or
@@ -137,7 +129,7 @@ state of external dependencies.
 - Comes with maintenance cost.
 - One time effort but very much helpful in verifying the logic quickly.
 
-## Example 
+## Mocking continue...
 
 .code techniques/mocking/sample_app/main.go
 
@@ -145,9 +137,25 @@ state of external dependencies.
 
 .caption "A great rule of thumb for Go is accept interfaces, return structs." –Jack Lindamood
 
-## Example continue...
+## Mocking continue...
 
 .code complex/complex.go /^func complex/,/^}/
+
+## Mocking continue...
+
+.code complex/simplify.go /^func simplify/,/^}/
+
+## Mocking continue...
+
+.code complex/simplify_test.go /^func TestSimplify/,/^}/
+
+## Mocking continue...
+
+.code complex/better.go /^func/,/^}/
+
+## Mocking continue...
+
+.code complex/better_test.go /^func/,/^}/
 
 ## Fuzzing
 
@@ -168,7 +176,6 @@ the program is then monitored for crashes, failures and memory leaks.
 
 ## Demo
 
-## Summary
 ## Summary
 
 - Test behaviours not implementation

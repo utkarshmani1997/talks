@@ -20,3 +20,6 @@ func TestGinkgo(t *testing.T) {
 	RegisterFailHandler(Fail)
 	RunSpecs(t, "Ginkgo Suite")
 }
+
+var _ = BeforeSuite(func() {})
+var _ = AfterSuite(func() {})

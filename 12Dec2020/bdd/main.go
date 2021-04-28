@@ -3,7 +3,6 @@ package main
 import "fmt"
 
 func Sum(x, y int) int {
-	fmt.Println("Received Digits :", x, y)
 	return x + y
 }
 
